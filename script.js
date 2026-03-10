@@ -14,9 +14,13 @@ if(target.startsWith("#")){
 
 e.preventDefault();
 
-document.querySelector(target).scrollIntoView({
+const section = document.querySelector(target);
+
+if(section){
+section.scrollIntoView({
 behavior:"smooth"
 });
+}
 
 }
 
@@ -27,54 +31,111 @@ behavior:"smooth"
 
 
 // Join button scroll
-document.querySelector(".join-btn").addEventListener("click", () => {
+const joinBtn = document.querySelector(".join-btn");
 
-document.querySelector(".subscribe").scrollIntoView({
+if(joinBtn){
+joinBtn.addEventListener("click", () => {
+
+const section = document.querySelector(".subscribe");
+
+if(section){
+section.scrollIntoView({
 behavior:"smooth"
 });
+}
 
 });
+}
 
 
 
 // Upcoming event button
-document.querySelector(".event-btn").addEventListener("click", () => {
+const eventBtn = document.querySelector(".event-btn");
 
-document.querySelector("#event").scrollIntoView({
+if(eventBtn){
+eventBtn.addEventListener("click", () => {
+
+const section = document.querySelector("#event");
+
+if(section){
+section.scrollIntoView({
 behavior:"smooth"
 });
+}
 
 });
+}
 
 
 
 // Event registration
-document.querySelector(".register-btn").addEventListener("click", () => {
+const registerBtn = document.querySelector(".register-btn");
+
+if(registerBtn){
+registerBtn.addEventListener("click", () => {
 
 window.open("https://tally.so/r/D41NYR","_blank");
 
 });
+}
 
 
 
 // Email subscription
-document.querySelector(".subscribe-btn").addEventListener("click", () => {
+const subscribeBtn = document.querySelector(".subscribe-btn");
 
-const email = document.querySelector(".email-input").value;
+if(subscribeBtn){
+subscribeBtn.addEventListener("click", () => {
+
+const emailInput = document.querySelector(".email-input");
+
+if(!emailInput) return;
+
+const email = emailInput.value;
 
 if(email === ""){
 
 alert("Please enter your email.");
-
 return;
 
 }
 
 alert("Thank you for joining Gnosis Bharat!");
 
-document.querySelector(".email-input").value = "";
+emailInput.value = "";
 
 });
+}
 
+
+
+// Mobile menu toggle
+const toggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("nav-menu");
+const navLinks = document.querySelectorAll("#nav-menu a");
+
+if(toggle && menu){
+
+// open / close menu
+toggle.addEventListener("click", (e) => {
+e.stopPropagation();
+menu.classList.toggle("active");
+});
+
+// close when clicking a nav link
+navLinks.forEach(link => {
+link.addEventListener("click", () => {
+menu.classList.remove("active");
+});
+});
+
+// close when clicking outside
+document.addEventListener("click", (e) => {
+if(!menu.contains(e.target) && !toggle.contains(e.target)){
+menu.classList.remove("active");
+}
+});
+
+}
 
 });
