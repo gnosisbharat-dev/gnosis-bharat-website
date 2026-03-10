@@ -1,0 +1,336 @@
+/* Base */
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family: "Inter", Arial, sans-serif;
+background:#ffffff;
+color:#111827;
+line-height:1.6;
+}
+
+section{
+padding:80px 10%;
+}
+
+
+
+/* Navbar */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 10%;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.06);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-weight:600;
+}
+
+.logo img{
+width:42px;
+height:42px;
+border-radius:50%;
+object-fit:cover;
+}
+
+nav a{
+margin:0 14px;
+text-decoration:none;
+color:#111827;
+font-weight:500;
+transition:0.2s;
+}
+
+nav a:hover{
+color:#F97316;
+}
+
+
+
+/* Buttons */
+
+button{
+cursor:pointer;
+border:none;
+border-radius:8px;
+padding:10px 18px;
+font-weight:600;
+transition:0.2s;
+}
+
+.join-btn{
+background:#f97316;
+color:white;
+}
+
+.join-btn:hover{
+background:#ea6a10;
+}
+
+.event-btn{
+background:#f3f4f6;
+}
+
+.register-btn{
+background:#f97316;
+color:white;
+margin-top:10px;
+}
+
+.register-btn:hover{
+background:#ea6a10;
+}
+
+
+
+/* Hero */
+
+.hero{
+background:url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b");
+background-size:cover;
+background-position:center;
+padding:140px 10%;
+color:white;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.45);
+}
+
+.hero-text{
+position:relative;
+z-index:2;
+max-width:520px;
+}
+
+.hero h1{
+font-size:46px;
+margin-bottom:10px;
+}
+
+.hero p{
+margin-bottom:20px;
+font-size:18px;
+}
+
+
+
+/* Event Section */
+
+.event-section h2{
+margin-bottom:30px;
+font-size:28px;
+}
+
+.event-card{
+display:flex;
+gap:28px;
+align-items:center;
+background:#f8f8f8;
+padding:28px;
+border-radius:16px;
+max-width:900px;
+box-shadow:0 6px 20px rgba(0,0,0,0.05);
+}
+
+.event-card img{
+width:260px;
+border-radius:12px;
+object-fit:cover;
+}
+
+.event-tag{
+background:#fff0e5;
+color:#f97316;
+padding:6px 12px;
+border-radius:6px;
+font-size:13px;
+font-weight:600;
+}
+
+.event-info h3{
+margin:10px 0;
+font-size:22px;
+}
+
+.event-meta{
+margin-bottom:8px;
+}
+
+.event-highlight{
+margin-bottom:5px;
+}
+
+.event-slots{
+color:#e53935;
+font-weight:600;
+margin-bottom:8px;
+}
+
+.event-features{
+padding-left:18px;
+margin-bottom:10px;
+}
+
+
+
+/* Countdown */
+
+.countdown{
+margin:12px 0 18px 0;
+font-weight:600;
+color:#f97316;
+}
+
+.countdown span{
+background:#fff3e8;
+padding:4px 6px;
+border-radius:5px;
+margin:0 2px;
+}
+
+
+
+/* About */
+
+.about{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:40px;
+}
+
+.about img{
+width:420px;
+border-radius:12px;
+}
+
+.about-text h2{
+margin-bottom:15px;
+}
+
+.about-text p{
+margin-bottom:12px;
+}
+
+.about-points{
+margin-top:10px;
+padding-left:18px;
+}
+
+
+
+/* Subscribe */
+
+.subscribe{
+background:#111827;
+color:white;
+text-align:center;
+}
+
+.subscribe h2{
+margin-bottom:8px;
+}
+
+.subscribe-box{
+margin-top:20px;
+}
+
+.subscribe input{
+padding:10px;
+width:260px;
+border:none;
+border-radius:6px 0 0 6px;
+}
+
+.subscribe button{
+background:#f97316;
+color:white;
+padding:10px 18px;
+border-radius:0 6px 6px 0;
+}
+
+
+
+/* Footer */
+
+footer{
+text-align:center;
+padding:20px;
+background:#0f172a;
+color:white;
+font-size:14px;
+}
+
+..community-links{
+margin-top:20px;
+text-align:center;
+}
+
+.community-text{
+margin-bottom:15px;
+font-size:18px;
+}
+
+.social-icons{
+display:flex;
+justify-content:center;
+gap:25px;
+}
+
+.social-icons img{
+width:40px;
+height:40px;
+transition:0.25s;
+}
+
+.social-icons img:hover{
+transform:scale(1.12);
+transition: 0.2s;
+}
+
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.event-card{
+flex-direction:column;
+text-align:center;
+}
+
+.about{
+flex-direction:column;
+text-align:center;
+}
+
+.about img{
+width:100%;
+}
+
+.hero{
+padding:120px 8%;
+}
+
+}
