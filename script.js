@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 
-// Smooth scroll for navigation links
+/* ================= SMOOTH SCROLL ================= */
+
 const links = document.querySelectorAll("nav a");
 
 links.forEach(link => {
@@ -10,7 +11,7 @@ link.addEventListener("click", function(e){
 
 const target = this.getAttribute("href");
 
-if(target.startsWith("#")){
+if(target && target.startsWith("#")){
 
 e.preventDefault();
 
@@ -18,7 +19,8 @@ const section = document.querySelector(target);
 
 if(section){
 section.scrollIntoView({
-behavior:"smooth"
+behavior:"smooth",
+block:"start"
 });
 }
 
@@ -30,7 +32,8 @@ behavior:"smooth"
 
 
 
-// Join button scroll
+/* ================= JOIN BUTTON ================= */
+
 const joinBtn = document.querySelector(".join-btn");
 
 if(joinBtn){
@@ -40,7 +43,8 @@ const section = document.querySelector(".subscribe");
 
 if(section){
 section.scrollIntoView({
-behavior:"smooth"
+behavior:"smooth",
+block:"start"
 });
 }
 
@@ -49,7 +53,8 @@ behavior:"smooth"
 
 
 
-// Upcoming event button
+/* ================= EVENT BUTTON ================= */
+
 const eventBtn = document.querySelector(".event-btn");
 
 if(eventBtn){
@@ -59,7 +64,8 @@ const section = document.querySelector("#event");
 
 if(section){
 section.scrollIntoView({
-behavior:"smooth"
+behavior:"smooth",
+block:"start"
 });
 }
 
@@ -68,20 +74,20 @@ behavior:"smooth"
 
 
 
-// Event registration
+/* ================= REGISTER BUTTON ================= */
+
 const registerBtn = document.querySelector(".register-btn");
 
 if(registerBtn){
 registerBtn.addEventListener("click", () => {
-
 window.open("https://tally.so/r/D41NYR","_blank");
-
 });
 }
 
 
 
-// Email subscription
+/* ================= EMAIL SUBSCRIBE ================= */
+
 const subscribeBtn = document.querySelector(".subscribe-btn");
 
 if(subscribeBtn){
@@ -91,13 +97,17 @@ const emailInput = document.querySelector(".email-input");
 
 if(!emailInput) return;
 
-const email = emailInput.value;
+const email = emailInput.value.trim();
 
+/* basic validation */
 if(email === ""){
-
 alert("Please enter your email.");
 return;
+}
 
+if(!email.includes("@")){
+alert("Enter a valid email.");
+return;
 }
 
 alert("Thank you for joining Gnosis Bharat!");
@@ -109,30 +119,47 @@ emailInput.value = "";
 
 
 
-// Mobile menu toggle
+/* ================= MOBILE MENU ================= */
+
 const toggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("nav-menu");
 const navLinks = document.querySelectorAll("#nav-menu a");
 
 if(toggle && menu){
 
-// open / close menu
+/* open / close menu */
 toggle.addEventListener("click", (e) => {
 e.stopPropagation();
 menu.classList.toggle("active");
+
+/* prevent body scroll when open */
+document.body.classList.toggle("menu-open");
 });
 
-// close when clicking a nav link
+
+/* close when clicking nav link */
 navLinks.forEach(link => {
 link.addEventListener("click", () => {
 menu.classList.remove("active");
+document.body.classList.remove("menu-open");
 });
 });
 
-// close when clicking outside
+
+/* close when clicking outside */
 document.addEventListener("click", (e) => {
 if(!menu.contains(e.target) && !toggle.contains(e.target)){
 menu.classList.remove("active");
+document.body.classList.remove("menu-open");
+}
+});
+
+
+/* close on ESC key (pro UX) */
+document.addEventListener("keydown", (e) => {
+if(e.key === "Escape"){
+menu.classList.remove("active");
+document.body.classList.remove("menu-open");
 }
 });
 
